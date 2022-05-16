@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Projeto_07_MVC</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row py-5">
+            <header>
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                    <a class="navbar-brand" href="#" alt="Academia Estação da Saúde - Matrícula">Academia Estação Saúde</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Inicio<span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Quemsomos" alt="Academia Estação da Saúde - Quem Somos">Quem Somos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Calendario" alt="Academia Estação da Saúde - Cronograma">Cronograma</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript: abrirMatricula();" alt="Academia Estação da Saúde - Matrícula">Matricule-se</a>
+                                <div id="popup_Matricula" class="popup_Matricula">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Nome Completo</label>
+                                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nome Completo">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Telefone Celular</label>
+                                            <input type="text" class="form-control" id="txtTelefone" placeholder="Telefone Celular">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Example select</label>
+                                            <select class="form-control" id="exampleFormControlSelect1">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+
+                                        <button type="button" class="btn btn-primary btn-lg btn-block" >Block level button</button>
+                                        <button type="button" class="btn btn-secondary btn-lg btn-block" onclick='fecharMatricula()'>Fechar Janela</button>
+                                    </form>
+                                
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript: abrirFalar();" alt="Academia Estação da Saúde - Fale Conosco">Fale Conosco</a>
+                                @* <a href="javascript: abrirAgenda();">Agenda de Eventos</a><br> *@
+                                <div id="popup_fale" class="popup_fale">
+                                    
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Nome Completo</label>
+                                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nome Completo">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput2">Telefone Celular</label>
+                                            <input type="text" class="form-control" id="txtTelefone" placeholder="Telefone Celular">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Example textarea</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                        </div>
+
+                                        <button type="button" class="btn btn-primary btn-lg btn-block" >Block level button</button>
+                                        <button type="button" class="btn btn-secondary btn-lg btn-block" onclick='fecharFalar()'>Fechar Janela</button>
+                                    </form>
+                                
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Avisos" alt="Academia Estação da Saúde - Avisos">Avisos</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
+                                    aria-expanded="false">Espaço Aluno</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                    <a class="dropdown-item" href="#">Cadastro</a>
+                                    <a class="dropdown-item" href="#">Histórico</a>
+                                    <a class="dropdown-item" href="#">Financeiro</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">----------</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Entrar<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>
+                                
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Sair">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+        </div>
+
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+
+        <!-- Rodapé -->
+
+        <footer class="pt-4 my-md-5 pt-md-5 border-top Rodape">
+            <div class="row">
+                <div class="col-6 col-md">
+                    <h5>Institucional</h5>
+                    <ul class="list-unstyled text-small">
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Sobre</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Fale Conosco</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Central Ajuda</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Poliita de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Planos</h5>
+                    <ul class="list-unstyled text-small">
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Siga a Academia</h5>
+                    <ul class="list-unstyled text-small">
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Facebook</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Instagram</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Twiter</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Outros</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+@* ------------------------------------------------------------------------------------------------------------------- *@
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog"><!-- Início do código da janela modal -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header"><!-- Header do modal -->
+                        <h4 class="modal-title">Login</h4><!-- Título -->
+                    </div>
+                    <div class="modal-body"><!-- Corpo do modal -->
+                        <form action=""><!-- Início do Formulário -->
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Digite seu email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Digite sua senha">
+                            </div>
+                            <button class="btn btn-block btn-info">Enviar</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer"><!-- Footer do Modal -->
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Fechar <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>                
+                    </div>
+                </div>
+            </div>
+        </div><!-- ##Fim do Modal -->
+@* ------------------------------------------------------------------------------------------------------------------- *@
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
